@@ -99,11 +99,14 @@ public class ToDoListController {
 		for(JsonNode taskNode:taskArray) {
 			System.out.println("TAAAAAAAASK");
 			Task task = new Task();
-			task.content = taskNode.get("content").asText();
-			task.status = taskNode.get("status").asText();
-			task.list = list;
-			list.addTask(task);
-			taskService.create(task);
+			
+			if(task.content != null) {
+				task.content = taskNode.get("content").asText();
+				task.status = taskNode.get("status").asText();
+				task.list = list;
+				list.addTask(task);
+				taskService.create(task);
+			}
 		}
 		
 	}
@@ -127,6 +130,17 @@ public class ToDoListController {
 	    serv.remove(id);
 	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+	
+	@DeleteMapping(value = "/{idList}/tasks/{id}")
+	public ResponseEntity<String> deleteTask(@PathVariable int idList, @PathVariable int id) {
+		TodoList list = serv.getById(idList);
+		if (list==null) return new ResponseEntity<>("list not found", HttpStatus.NOT_FOUND);
+		Task task = taskService.getById(id);
+	    list.removeTask(task);
+	    taskService.remove(id);
+	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
 
 //	// localhost:8080/todolists
 //	@GetMapping("/full")

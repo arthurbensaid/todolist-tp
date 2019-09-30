@@ -31,5 +31,9 @@ public class TodoList extends GenericEntity{
 	public void addTask(Task task) {
 		this.tasks.add(task);
 	}
+	
+	public boolean removeTask(Task task) {
+		return this.tasks.remove(task);
+	}
 
 }

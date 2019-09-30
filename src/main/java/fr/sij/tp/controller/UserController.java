@@ -54,6 +54,15 @@ public class UserController {
 		return new ResponseEntity<>(new UsrDto(usr), HttpStatus.OK);
 	}
 	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<String> deleteUsr(@PathVariable int id) {
+		Usr usr = serv.getById(id);
+		if (usr==null) return new ResponseEntity<>("list not found", HttpStatus.NOT_FOUND);
+	    serv.remove(id);
+	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	
 //	@PostMapping
 //	public ResponseEntity<Integer> createTodoList(@RequestBody TodoList list) {
 //		if(list.id<=0) {
@@ -77,15 +86,6 @@ public class UserController {
 		int id = serv.create(usr);
 	    return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
 	}
-	
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<String> deleteList(@PathVariable int id) {
-		Usr usr = serv.getById(id);
-		if (usr==null) return new ResponseEntity<>("list not found", HttpStatus.NOT_FOUND);
-	    serv.remove(id);
-	    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
-
 
 //	// localhost:8080/todolists
 //	@GetMapping("/full")
