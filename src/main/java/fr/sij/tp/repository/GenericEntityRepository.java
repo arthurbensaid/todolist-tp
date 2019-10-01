@@ -7,9 +7,6 @@ import javax.persistence.EntityManager;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
 
-import fr.sij.tp.entity.GenericEntity;
-import fr.sij.tp.entity.TodoList;
-
 @Repository
 public abstract class GenericEntityRepository<T> extends SimpleJpaRepository<T, Integer> {
 
