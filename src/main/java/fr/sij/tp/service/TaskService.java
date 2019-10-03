@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 
 
 import fr.sij.tp.entity.Task;
-import fr.sij.tp.repository.TaskRepository;
+import fr.sij.tp.repository.CommonRepository;
 
 @Service
 public class TaskService {
 	
-	@Autowired TaskRepository repo;
+	@Autowired CommonRepository<Task> repo;
 	
 	public Task getById(int id) {
 		return repo.getById(id);
