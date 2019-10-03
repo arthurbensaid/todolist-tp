@@ -9,7 +9,7 @@ import fr.sij.tp.entity.Usr;
 
 @Repository
 @Transactional
-public class UsrRepository extends GenericEntityRepository<Usr> { 
+public class UsrRepository extends CommonRepository<Usr> { 
 
 	public UsrRepository(EntityManager em) {
 		super(Usr.class,em);

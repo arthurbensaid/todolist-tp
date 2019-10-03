@@ -9,7 +9,7 @@ import fr.sij.tp.entity.Task;
 
 @Repository
 @Transactional
-public class TaskRepository extends GenericEntityRepository<Task> {
+public class TaskRepository extends CommonRepository<Task> {
 
 	public TaskRepository(EntityManager em) {
 		super(Task.class, em);

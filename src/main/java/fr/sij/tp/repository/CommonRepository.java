@@ -1,7 +1,5 @@
 package fr.sij.tp.repository;
 
-import java.io.Serializable;
-
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 

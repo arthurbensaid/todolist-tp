@@ -9,7 +9,7 @@ import fr.sij.tp.entity.TodoList;
 
 @Repository
 @Transactional
-public class TodoListRepository extends GenericEntityRepository<TodoList> {
+public class TodoListRepository extends CommonRepository<TodoList> {
 
 	public TodoListRepository(EntityManager em) {
 		super(TodoList.class, em);
