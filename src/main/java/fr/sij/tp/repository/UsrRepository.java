@@ -1,21 +1,18 @@
 package fr.sij.tp.repository;
 
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import fr.sij.tp.entity.Usr;
 
-public interface UsrRepository extends JpaRepository<Usr, Integer> { 
-	
-	@Query("SELECT u FROM Usr u WHERE u.login LIKE :prefix%") // en SQL where login like 'xxxx%'
-	public List<Usr> findUserByPrefix(@Param("prefix") String prefix);
+@Repository
+@Transactional
+public class UsrRepository extends GenericEntityRepository<Usr> { 
 
-	@Query(value="SELECT * FROM USR WHERE FIRSTNAME LIKE %?1% OR LASTNAME LIKE %?1%", nativeQuery = true)
-	public List<Usr> findUserByName(String str);
+	public UsrRepository(EntityManager em) {
+		super(Usr.class,em);
+	}
 
-	public List<Usr> findByLowPassword();
-	
-	public int countUsers();
 }

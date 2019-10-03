@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.sij.tp.entity.Usr;
-import fr.sij.tp.repository.UsrRepository;
+import fr.sij.tp.repository.UsrRepositoryQueries;
 
 @RestController
 @RequestMapping("users")
 public class UserController {
 	
-	@Autowired UsrRepository repo;
+	@Autowired UsrRepositoryQueries repo;
 	
 	@GetMapping("/prefix/{prefix}")
 	public List<Usr> findUserByPrefix(@PathVariable String prefix) {
