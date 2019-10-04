@@ -18,4 +18,7 @@ public interface UsrRepositoryQueries extends JpaRepository<Usr, Integer> {
 	public List<Usr> findByLowPassword();
 	
 	public int countUsers();
+	
+	@Query(value="SELECT u FROM Usr WHERE u.login = :login")
+	public Usr findByLogin(@Param("login") String login);
 }
