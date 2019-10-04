@@ -76,7 +76,7 @@ public class UserController {
 //	    return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
 //	}
 	
-	@PostAuthorize("hasRole('ROLE_ADMIN')")
+	@PostAuthorize("hasRole('admin')")
 	@PostMapping
 	public ResponseEntity<Integer> createUsr(@RequestBody @Valid UsrDto dto) {
 		if(dto.id<=0) {
