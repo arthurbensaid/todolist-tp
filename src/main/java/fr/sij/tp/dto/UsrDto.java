@@ -2,6 +2,8 @@ package fr.sij.tp.dto;
 
 import java.util.*;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -13,10 +15,10 @@ import fr.sij.tp.entity.Usr;
 public class UsrDto {
 	
 	public int id;
-	public String login;
-	public String password;
-	public String firstname;
-	public String lastname;
+	@NotNull public String login;
+	@NotNull public String password;
+	@NotNull public String firstname;
+	@NotNull public String lastname;
 	public List<TodoListDto> todolists = new ArrayList<>();
 	
 	public UsrDto() {

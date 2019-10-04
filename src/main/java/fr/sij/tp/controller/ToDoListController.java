@@ -86,6 +86,7 @@ public class ToDoListController {
 		TodoList list = new TodoList();
 		list.color = dto.color;
 		list.dueDate = dto.dueDate;
+		list.title = dto.title;
 		list.owner = usrService.getById(dto.idOwner); //TODO Fiddle with owner
 		int id = serv.create(list);
 	    return new ResponseEntity<Integer>(id, HttpStatus.CREATED);
@@ -287,3 +288,4 @@ public class ToDoListController {
 //	}
 //	
 }
+

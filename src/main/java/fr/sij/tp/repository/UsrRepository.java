@@ -14,5 +14,12 @@ public class UsrRepository extends CommonRepository<Usr> {
 	public UsrRepository(EntityManager em) {
 		super(Usr.class,em);
 	}
+	
+	public Usr findByLogin(String login) {
+		for(Usr user:this.findAll()) {
+			if(user.login == login) return user;
+		}
+		return null;
+	}
 
 }
