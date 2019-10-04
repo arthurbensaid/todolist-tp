@@ -17,7 +17,7 @@ public class UsrRepository extends CommonRepository<Usr> {
 	
 	public Usr findByLogin(String login) {
 		for(Usr user:this.findAll()) {
-			if(user.login == login) return user;
+			if(user.login.equals(login)) return user;
 		}
 		return null;
 	}

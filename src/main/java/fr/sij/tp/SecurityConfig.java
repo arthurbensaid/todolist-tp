@@ -23,7 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/css/**", "/index").permitAll()
 			.antMatchers("/todolists/**", "/users/**").authenticated()
-		.and().httpBasic();
+		.and().httpBasic()
+		.and().csrf().disable();
 	}
 
 }

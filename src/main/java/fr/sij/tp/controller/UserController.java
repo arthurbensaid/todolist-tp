@@ -57,11 +57,6 @@ public class UserController {
 		return new ResponseEntity<>(new UsrDto(usr), HttpStatus.OK);
 	}
 	
-	@GetMapping("/auth/{username}")
-	public UserDetails getByUsername(@PathVariable String username) {
-		return serv.loadUserByUsername(username);
-	}
-	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<String> deleteUsr(@PathVariable int id) {
 		Usr usr = serv.getById(id);
