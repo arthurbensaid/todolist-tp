@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,6 +55,11 @@ public class UserController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(new UsrDto(usr), HttpStatus.OK);
+	}
+	
+	@GetMapping("/auth/{username}")
+	public UserDetails getByUsername(@PathVariable String username) {
+		return serv.loadUserByUsername(username);
 	}
 	
 	@DeleteMapping(value = "/{id}")
