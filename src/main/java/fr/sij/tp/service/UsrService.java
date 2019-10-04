@@ -40,6 +40,6 @@ public class UsrService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usr u = repo.findByLogin(username);
 		if(u==null) throw new UsernameNotFoundException(username+" not found");
-		return User.withDefaultPasswordEncoder().username(username).password(u.password).roles("admin").build();
+		return User.withUsername(username).password(u.password).roles("admin").build();
 	}
 }
