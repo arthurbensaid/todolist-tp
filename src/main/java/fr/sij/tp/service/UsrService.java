@@ -31,7 +31,7 @@ public class UsrService implements UserDetailsService {
 		Usr updatedUsr = repo.save(usr);
 		return updatedUsr.id;
 	}
-
+	
 	public void remove(int id) {
 		repo.deleteById(id);
 		

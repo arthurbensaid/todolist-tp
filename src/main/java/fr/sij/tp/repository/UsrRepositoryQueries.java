@@ -19,6 +19,6 @@ public interface UsrRepositoryQueries extends JpaRepository<Usr, Integer> {
 	
 	public int countUsers();
 	
-	@Query(value="SELECT u FROM Usr WHERE u.login = :login")
+	@Query(value="SELECT u FROM Usr u WHERE u.login = :login")
 	public Usr findByLogin(@Param("login") String login);
 }
